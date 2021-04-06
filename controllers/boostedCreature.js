@@ -41,8 +41,10 @@ module.exports = {
                 const nameBoostedCreature = elementContainer.querySelector('a').text;
                 const imgLink = elementContainer.querySelector(`img[alt="${nameBoostedCreature}"]`).src;
 
-                console.log(nameBoostedCreature);
-                console.log(imgLink);
+                res.json({
+                    name: nameBoostedCreature,
+                    imgLink: imgLink
+                })
             })
 
     }
