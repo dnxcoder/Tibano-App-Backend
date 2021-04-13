@@ -1,6 +1,9 @@
 
 const got = require('got');
 const jsdom = require('jsdom');
+const axios = require('axios');
+
+
 const { JSDOM } = jsdom;
 
 module.exports = {

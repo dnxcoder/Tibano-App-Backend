@@ -2,6 +2,9 @@
 
 const got = require('got');
 const jsdom = require('jsdom');
+const axios = require('axios');
+
+
 const { JSDOM } = jsdom;
 
 const boostedCreatureURL = 'https://www.tibia.com/library/?subtopic=creatures';
@@ -32,7 +35,7 @@ module.exports = {
 
     getBoostedCreatureFromWikiTibia(req, res) {
 
-        got(wikiBoostedCreatureURL)
+        axios.get(wikiBoostedCreatureURL)
             .then(response => {
 
                 const allDomPage = new JSDOM(response.body.toString()).window.document;
