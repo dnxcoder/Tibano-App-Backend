@@ -11,9 +11,12 @@ module.exports = {
 
 
 
-        got('https://www.tibiawiki.com.br/wiki/Gigantes')
+        got('https://tibia.fandom.com/wiki/Creatures')
             .then(response => {
 
+                res.send(`${response}`);
+
+                /*
                 const allDomPage = new JSDOM(response.body.toString()).window.document;
                 const tableMonsters = allDomPage.querySelector('.sortable');
                 const linesFromTableMonster = tableMonsters?.querySelectorAll('tr');
@@ -88,15 +91,12 @@ module.exports = {
 
                 charactersInfoArray.shift();
                 res.json(charactersInfoArray);
-
+*/
 
             }).catch((error) => {
 
                 res.send('Aqui esta o erro : ' + error);
-            })
-
-
-
+            });
     }
 
 
