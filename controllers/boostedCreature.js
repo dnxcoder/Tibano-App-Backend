@@ -1,6 +1,3 @@
-
-
-const got = require('got');
 const jsdom = require('jsdom');
 const axios = require('axios');
 
@@ -13,32 +10,13 @@ const wikiBoostedCreatureURL = 'https://tibia.fandom.com/wiki/Boosted_Creature';
 
 module.exports = {
 
-    getBoostedCreature(req, res) {
-
-        got(boostedCreatureURL)
-            .then(response => {
-
-                const allDomPage = new JSDOM(response.body.toString()).window.document;
-
-                const elementContainer = allDomPage.querySelector('.InnerTableContainer');
-                const imgLink = elementContainer.querySelector('img');
-                const linkElement = elementContainer.querySelector('a');
-
-
-                res.json({
-                    name: linkElement.text,
-                    imgLink: imgLink.src
-                })
-
-            });
-    },
 
     getBoostedCreatureFromWikiTibia(req, res) {
 
         axios.get(wikiBoostedCreatureURL)
             .then(response => {
 
-                console.log(response.body.toString());
+                console.log(response.data.toString());
                 const allDomPage = new JSDOM(response.data.toString()).window.document;
 
                 const elementContainer = allDomPage.querySelector('.compact-box');
@@ -49,6 +27,9 @@ module.exports = {
                     name: nameBoostedCreature,
                     imgLink: imgLink
                 })
+            }).catch((error) => {
+
+                res.send('Este foi o erro encontrado :' + error)
             })
 
     },
