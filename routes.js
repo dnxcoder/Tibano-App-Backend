@@ -9,6 +9,7 @@ const getMonster = require('./controllers/getMonster');
 routes.get('/boostedCreature' , boostedCreature.getBoostedCreature);
 
 routes.get('/wikiBoostedCreature', boostedCreature.getBoostedCreatureFromWikiTibia);
+
 routes.get('/getMonster', getMonster.getMonster);
 
 

@@ -35,10 +35,11 @@ module.exports = {
 
     getBoostedCreatureFromWikiTibia(req, res) {
 
-        got(wikiBoostedCreatureURL)
+        axios.get(wikiBoostedCreatureURL)
             .then(response => {
 
-                const allDomPage = new JSDOM(response.body.toString()).window.document;
+                console.log(response.body.toString());
+                const allDomPage = new JSDOM(response.data.toString()).window.document;
 
                 const elementContainer = allDomPage.querySelector('.compact-box');
                 const nameBoostedCreature = elementContainer.querySelector('a').text;
@@ -50,7 +51,8 @@ module.exports = {
                 })
             })
 
-    }
+    },
+
 
 
 
